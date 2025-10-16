@@ -1,0 +1,1305 @@
+{% if is_august %} {% set og_image =
+'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F9lHsU%2FbtsISJtMKUf%2Fr3DxY0B6HV1KjZ7sMKjAVk%2Fimg.png'
+| safe %} {% set description = "매일 출석 체크하고 포인트 받자!" %} {% set
+background_image =
+'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdna%2FmfUua%2FbtsPFCBLAwb%2FAAAAAAAAAAAAAAAAAAAAAOv83G1VaseNnrINT0DN6X6ACr2BgAQoLPq1A2VUfl1f%2Fimg.png%3Fcredential%3DyqXZFxpELC7KVnFOS48ylbz2pIh7yKj8%26expires%3D1756652399%26allow_ip%3D%26allow_referer%3D%26signature%3DnBzT9f6kGMDfvGRFi93qp9ZsWqA%253D'
+| safe %} {% set kakao_share_image =
+'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F3yNvS%2FbtsIRXMN0sn%2FWYsCkXZ9OUVqkLeQwXZgk1%2Fimg.png'
+| safe %} {% set kakao_share_description = "매일 출석 체크하고 포인트 받자!" %}
+{% else %} {% set og_image =
+'https://blog.kakaocdn.net/dn/cTamIa/btsJmNaRdIm/3i03JC0JwTHMnTGTtB4rF1/img.png'
+| safe %} {% set description = "매일 출석 체크하고 포인트 받자!" %} {% set
+background_image =
+'https://blog.kakaocdn.net/dn/blVB2Y/btsJl5wBxOw/OZ15kBwhfKnbzKP67Iwkv0/img.png'
+| safe %} {% set kakao_share_image =
+'https://blog.kakaocdn.net/dn/bAiKDU/btsJmKkTVTe/2ypJY6BVTrwIrfzQLR8Cn1/img.png'
+| safe %} {% set kakao_share_description = "매일 출석 체크하고 포인트 받자!" %}
+{% endif %}
+
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{description}}" />
+    <meta property="og:title" content="큐리어스 출석 체크 이벤트!" />
+    <meta property="og:description" content="{{description}}" />
+    <meta property="og:image" content="{{og_image}}" />
+
+    <title>큐리어스 출석체크</title>
+
+    {% include "head/google_analytics.html" %} {% include
+    "head/google_tag_manager.html" %}
+    <link href="/static/css/reset.css" rel="stylesheet" />
+    <link
+      rel="shortcut icon"
+      href="https://d1kz3wll5f1aue.cloudfront.net/images/statics/favicon.ico"
+    />
+    <link rel="stylesheet" href="/static/css/EVT.css" />
+    <link rel="stylesheet" href="/static/css/ver2.main.css" />
+    <link rel="stylesheet" href="/static/css/EVT_bootstrap.css" />
+    <link rel="stylesheet" href="/static/css/page/attendance_check.css" />
+
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+
+  <body style="background-color: #f1f1f1">
+    <div class="responsive-container">
+      <div style="max-width: 900px; margin: 0 auto">
+        <div
+          class="GiftSection"
+          style="text-align: center; position: relative"
+        >
+          <img
+            src="{{background_image}}"
+            class="main-background-image"
+          />
+          <div
+            class="LeftTopButton"
+            id="LeftTopButton"
+            style="cursor: pointer"
+          >
+            <div style="position: absolute; top: 1rem; left: 1rem">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+              >
+                <circle cx="15.9999" cy="16" r="16" fill="white" />
+              </svg>
+            </div>
+            <div style="position: absolute; top: 1.3rem; left: 1.3rem">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+              >
+                <path
+                  d="M13.6664 17.2222L7.44421 11L13.6664 4.77777"
+                  stroke="#121212"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+
+            <div
+              style="
+                position: absolute;
+                bottom: 6rem;
+                left: 50%;
+                transform: translateX(-50%);
+              "
+            >
+              <div class="tooltip">
+                공유하면 추가
+                <span
+                  style="
+                    color: #00c123;
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    line-height: 1.25rem;
+                    letter-spacing: -0.02188rem;
+                  "
+                  >25P 지급!</span
+                >
+              </div>
+            </div>
+            <div
+              style="
+                position: absolute;
+                bottom: 0.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+              "
+            >
+              <button
+                class="mkt_attendance_page_share actionButton"
+                id="ShareButton"
+                style="
+                  width: calc(100% - 2rem);
+                  padding: 0.875rem 3.875rem;
+                  margin-bottom: 0.425rem;
+                  border-radius: 0.625rem;
+                  background: #fff;
+                  border: 0px;
+                  cursor: pointer;
+                  color: #121212;
+                  font-weight: 700;
+                "
+              >
+                <p
+                  style="
+                    text-align: center;
+                    font-size: 1rem;
+                    line-height: 1.5rem; /* 150% */
+                    letter-spacing: -0.025rem;
+                  "
+                >
+                  주변 친구에게도 공유하기(<span
+                    class="numberOfRemainingChanceToShare"
+                    >3</span
+                  >/3)
+                </p>
+              </button>
+              <p
+                style="
+                  color: #565656;
+                  text-align: center;
+                  font-size: 0.875rem;
+                  font-weight: 500;
+                  line-height: 1.25rem; /* 142.857% */
+                  letter-spacing: -0.02188rem;
+                "
+              >
+                공유하기는 하루 세 번 가능합니다!
+              </p>
+            </div>
+          </div>
+          <div class="AfterGiftSection" style="padding: 0rem 1rem 1.75rem 1rem">
+            <div
+              class="CheckSection"
+              style="
+                padding-top: 1.25rem;
+                padding-bottom: 1rem;
+                display: flex;
+                flex-direction: column;
+              "
+            >
+              <h1
+                class="sp-mb-2"
+                style="
+                  color: #121212;
+                  font-size: 1.25rem;
+                  font-weight: 700;
+                  line-height: 2rem; /* 160% */
+                  letter-spacing: -0.03125rem;
+
+                  display: flex;
+                  align-self: stretch;
+                "
+              >
+                큐 포인트 받아가세요!
+              </h1>
+              <!-- 출석 체크 섹션 -->
+              <div
+                class="CheckButtonSection"
+                style="
+                  display: block;
+                  padding: 1rem 0.75rem;
+                  align-items: flex-start;
+                  gap: 0.625rem;
+                  align-self: stretch;
+                  border-radius: 0.625rem;
+                  background: #fff;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    flex: auto;
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 0.5rem;
+                      flex: 1 0 0;
+                    "
+                  >
+                    <div>
+                      <img
+                        style="width: 2.875rem; height: 2.875rem"
+                        src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FyD7uF%2FbtsGus1TBhv%2F6djY94AdPk8eiV637ULN2k%2Fimg.png"
+                        alt="달력이미지"
+                      />
+                    </div>
+
+                    <div
+                      style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 0.25rem;
+                        flex: 1 0 0;
+                      "
+                    >
+                      <div
+                        style="
+                          color: #121212;
+                          font-size: 1rem;
+                          font-weight: 700;
+                          line-height: 1.5rem; /* 150% */
+                          letter-spacing: -0.025rem;
+                          align-self: stretch;
+                          display: flex;
+                        "
+                      >
+                        출석 체크
+                      </div>
+                      <div
+                        style="
+                          color: #565656;
+                          font-size: 0.8125rem;
+                          font-weight: 500;
+                          line-height: 1.125rem; /* 138.462% */
+                          letter-spacing: -0.02031rem;
+                          align-self: stretch;
+                          display: flex;
+                        "
+                      >
+                        매일매일 쌓이는 큐 포인트!
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    class="mkt_attendance_page_check"
+                    style="
+                      display: flex;
+                      padding: 0.625rem;
+                      justify-content: center;
+                      align-items: center;
+                      gap: 0.625rem;
+                      border-radius: 0.625rem;
+                      background-color: #03c124;
+                      border: 0px;
+                      cursor: pointer;
+                      color: #fff;
+                      font-weight: 700;
+                    "
+                    id="AttendanceButton"
+                  >
+                    <p
+                      style="
+                        text-align: center;
+                        font-size: 0.875rem;
+                        line-height: 1.25rem; /* 142.857% */
+                        letter-spacing: -0.02188rem;
+                      "
+                    >
+                      출석 체크하기
+                    </p>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- 공유 보상 프로그램  섹션-->
+            <div
+              class="affiliateShareButtonSection sp-mb-4"
+              style="
+                display: block;
+                padding: 1rem 0.75rem;
+                align-items: flex-start;
+                gap: 0.625rem;
+                align-self: stretch;
+                border-radius: 0.625rem;
+                background: #fff;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 0.75rem;
+                  flex: auto;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    flex: 1 0 0;
+                  "
+                >
+                  <div>
+                    <img
+                      style="width: 2.875rem; height: 2.875rem"
+                      src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F7VvYr%2FbtsLz86tFUr%2FzuaSSzzZLCm22zBcv1YKg0%2Fimg.png"
+                      alt="공유 보상 프로그램 이미지"
+                    />
+                  </div>
+
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      align-items: flex-start;
+                      gap: 0.25rem;
+                      flex: 1 0 0;
+                    "
+                  >
+                    <div
+                      style="
+                        color: #121212;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        line-height: 1.5rem; /* 150% */
+                        letter-spacing: -0.025rem;
+                        align-self: stretch;
+                        display: flex;
+                      "
+                    >
+                      공유 보상 프로그램
+                    </div>
+                    <div
+                      style="
+                        color: #565656;
+                        font-size: 0.8125rem;
+                        font-weight: 500;
+                        line-height: 1.125rem; /* 138.462% */
+                        letter-spacing: -0.02031rem;
+                        align-self: stretch;
+                        display: flex;
+                      "
+                    >
+                      공유를 통한 큐 포인트 적립!
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="mkt_attendance_page_affiliate_share"
+                  style="
+                    display: flex;
+                    padding: 0.625rem;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.625rem;
+                    border-radius: 0.625rem;
+                    background-color: #03c124;
+                    border: 0px;
+                    cursor: pointer;
+                    color: #fff;
+                    font-weight: 700;
+                  "
+                  id="affiliateShareButton"
+                  onclick="window.location.href='{{url_for('popular_studies_page')}}?from=attendance_check&func=affiliate_share';"
+                >
+                  <p
+                    style="
+                      text-align: center;
+                      font-size: 0.875rem;
+                      line-height: 1.25rem; /* 142.857% */
+                      letter-spacing: -0.02188rem;
+                    "
+                  >
+                    공유하러 가기
+                  </p>
+                </button>
+              </div>
+              <div>
+                <div
+                  style="
+                    height: 1px;
+                    align-self: stretch;
+                    background: #f1f1f1;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                  "
+                ></div>
+              </div>
+              <div class="HowToGetMorePoint">
+                <div
+                  style="
+                    color: #121212;
+                    font-size: 14px;
+                    font-weight: 700;
+                    line-height: 1.5rem; /* 150% */
+                    letter-spacing: -0.025rem;
+                    align-self: stretch;
+                    display: flex;
+                  "
+                >
+                  공유 보상 프로그램 참여 방법!
+                </div>
+                <div
+                  style="
+                    margin-top: 8px;
+                    color: #565656;
+                    font-size: 13px;
+                    font-weight: 500;
+                    line-height: 18px; /* 138.462% */
+                    letter-spacing: -0.325px;
+                  "
+                >
+                  <div style="display: flex">
+                    <div>&#x2022;</div>
+                    <div>
+                      <p>
+                        어울림을 친구에게 공유하고, 공유 받은 친구가 어울림을
+                        구매하면 큐 포인트를 지급해 드립니다.
+                      </p>
+                    </div>
+                  </div>
+                  <div style="display: flex; margin-top: 12px">
+                    <div>&#x2022;</div>
+                    <div>
+                      <p>단, 공유받은 어울림을 결제해야 포인트가 적립됩니다</p>
+                    </div>
+                  </div>
+                  <div style="display: flex; margin-top: 12px">
+                    <div>&#x2022;</div>
+                    <div>
+                      <p>공유 보상 프로그램의 횟수 제한은 없습니다</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 공유 보상 프로그램  섹션-->
+            <div
+              class="affiliateShareButtonSection sp-mb-4"
+              style="
+                display: block;
+                padding: 1rem 0.75rem;
+                align-items: flex-start;
+                gap: 0.625rem;
+                align-self: stretch;
+                border-radius: 0.625rem;
+                background: #fff;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 0.75rem;
+                  flex: auto;
+                "
+              >
+                <div
+                  style="
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    flex: 1 0 0;
+                  "
+                >
+                  <div style="font-size: 36px">📌</div>
+
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      align-items: flex-start;
+                      gap: 0.25rem;
+                      flex: 1 0 0;
+                    "
+                  >
+                    <div
+                      style="
+                        color: #121212;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        line-height: 1.5rem; /* 150% */
+                        letter-spacing: -0.025rem;
+                        align-self: stretch;
+                        display: flex;
+                      "
+                    >
+                      커뮤니티 참여 리워드
+                    </div>
+                    <div
+                      style="
+                        color: #565656;
+                        font-size: 0.8125rem;
+                        font-weight: 500;
+                        line-height: 1.125rem;
+                        letter-spacing: -0.02031rem;
+                        align-self: stretch;
+                        display: flex;
+                      "
+                    >
+                      <span class="community-reward-pc">
+                        매일 글을 쓰거나 댓글을 남기면, 큐 포인트가 자동으로
+                        쌓입니다!
+                      </span>
+                      <span class="community-reward-mobile">
+                        글쓰기를 통한 큐 포인트 적립!<br />
+                        <span style="font-size: 0.95em; color: #888"
+                          >*자정마다 초기화됩니다</span
+                        >
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="mkt_attendance_page_affiliate_share"
+                  style="
+                    display: flex;
+                    padding: 0.625rem;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 0.625rem;
+                    border-radius: 0.625rem;
+                    background-color: #03c124;
+                    border: 0px;
+                    cursor: pointer;
+                    color: #fff;
+                    font-weight: 700;
+                  "
+                  id="affiliateShareButton"
+                  onclick="window.location.href='/community';"
+                >
+                  <p
+                    style="
+                      text-align: center;
+                      font-size: 0.875rem;
+                      line-height: 1.25rem; /* 142.857% */
+                      letter-spacing: -0.02188rem;
+                    "
+                  >
+                    참여하러 가기
+                  </p>
+                </button>
+              </div>
+              <div>
+                <div
+                  style="
+                    height: 1px;
+                    align-self: stretch;
+                    background: #f1f1f1;
+                    margin-top: 1rem;
+                    margin-bottom: 1rem;
+                  "
+                ></div>
+                <div
+                  class="HowToGetMorePointInCommunity d-flex"
+                  style="justify-content: center"
+                >
+                  <div
+                    class="sp-gap-2"
+                    style="
+                      width: 100px;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      padding: 12px 0 8px 0;
+                      margin: 0 4px;
+                    "
+                  >
+                    <div style="color: var(--system-black); font-weight: 700">
+                      최초 글 작성
+                    </div>
+                    <div style="font-size: 46px">🍼</div>
+                    <div
+                      id="FirstPostCount"
+                      style="
+                        display: flex;
+                        padding: 8px 12px;
+                        justify-content: center;
+                        align-items: center;
+                        background: var(--primary-50);
+                        color: var(--gray-700);
+                        border-radius: 100px;
+                        font-weight: 700;
+                      "
+                    >
+                      0
+                      <div>&nbsp;회</div>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      width: 1px;
+                      height: 48px;
+                      background: #f1f1f1;
+                      margin-left: 16px;
+                      margin-right: 16px;
+                      display: flex;
+                      align-items: center;
+                      align-self: center;
+                    "
+                  ></div>
+                  <div
+                    class="sp-gap-2"
+                    style="
+                      width: 100px;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      padding: 12px 0 8px 0;
+                      margin: 0 4px;
+                    "
+                  >
+                    <div style="color: var(--system-black); font-weight: 700">
+                      글 작성
+                    </div>
+                    <div style="font-size: 46px">✏️</div>
+                    <div
+                      id="PostCount"
+                      style="
+                        display: flex;
+                        padding: 8px 12px;
+                        justify-content: center;
+                        align-items: center;
+                        background: var(--primary-50);
+                        color: var(--gray-700);
+                        border-radius: 100px;
+                        font-weight: 700;
+                      "
+                    >
+                      0
+                      <div>&nbsp;회</div>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      width: 1px;
+                      height: 48px;
+                      background: #f1f1f1;
+                      margin-left: 16px;
+                      margin-right: 16px;
+                      display: flex;
+                      align-items: center;
+                      align-self: center;
+                    "
+                  ></div>
+                  <div
+                    class="sp-gap-2"
+                    style="
+                      width: 100px;
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      padding: 12px 0 8px 0;
+                      margin: 0 4px;
+                    "
+                  >
+                    <div style="color: var(--system-black); font-weight: 700">
+                      댓글 작성
+                    </div>
+                    <div style="font-size: 46px">💬</div>
+                    <div
+                      id="CommentCount"
+                      style="
+                        display: flex;
+                        padding: 8px 12px;
+                        justify-content: center;
+                        align-items: center;
+                        background: var(--primary-50);
+                        color: var(--gray-700);
+                        border-radius: 100px;
+                        font-weight: 700;
+                      "
+                    >
+                      0
+                      <div>&nbsp;회</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% for title, studies in [('무료 미니강의', free_mini_lesson)]%} {%
+            if mobile %} {% set studies = studies[:6] %} {% endif %}
+            <!-- Study section -->
+            <section>
+              <div
+                class="{% if mobile %}mt-0 {%else%}mt-4{% endif%} mb-2 d-flex justify-content-between align-items-center sp-mb-4"
+              >
+                <h3 class="page-title-font mb-0" id="recruiting-study">
+                  {{title}}
+                </h3>
+              </div>
+              <div class="row mt-1">
+                <!-- Nav -->
+                {% if studies == [] %}
+                <p>해당하는 어울림이 없습니다</p>
+                {% endif %}
+                <!-- prettier-ignore -->
+                {% for study in studies[:12] %} {% if study['status'] in
+      ["recruiting", "in-progress"] %}
+                <div class="column colum-1 colum-2 colum-3 p-1 mb-1">
+                  <a href="{{url_for('study_page', study_id = study['id'])}}">
+                    <div class="card pb-2 pt-1 px-1 border-0">
+                      <img
+                        src="{{study['cover_image']}}"
+                        class="study-mainpage-img rounded-2"
+                        alt="어울림"
+                      />
+                      <div class="card-body ps-1 pt-1">
+                        <p class="mb-0 text-muted" style="font-size: 14px">
+                          {{study['writer_nickname']}}
+                        </p>
+                        <p class="ellipsis-2 fw-bold mb-1">
+                          {{study['title']}}
+                        </p>
+                        <p
+                          class="StudySchedule{{study['id']}}"
+                          style="font-size: 13px; margin-bottom: 4px"
+                        ></p>
+                        <p class="mt-0 mb-0" style="font-size: 13px">
+                          {% if study['StudyViewCount']%} ❤️
+                          {{study['StudyViewCount'][0]['count']}}명이 관심
+                          있어요 {%endif%}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                {% endif %} {% endfor %}
+              </div>
+            </section>
+            <!-- End Study section -->
+            {% endfor %} {% for title, studies, href in [('실시간 인기 어울림',
+            popular_study, url_for('popular_studies_page'))]%} {% if mobile %}
+            {% set studies = studies[:6] %} {% endif %}
+            <!-- Study section -->
+            <section>
+              <div
+                class="{% if mobile %}mt-0 {%else%}mt-4{% endif%} mb-2 d-flex justify-content-between sp-mt-4"
+              >
+                <h3 class="me-5 page-title-font mb-0" id="recruiting-study">
+                  {{title}}
+                </h3>
+                <a class="mkt_main_cat_popular_all" href="{{href}}">
+                  <button class="btn btn-xxs btn-secondary we-500 sp-gap-1">
+                    <span>전체보기</span>
+                    <i data-feather="arrow-right" class="icon-xxs"></i>
+                  </button>
+                </a>
+              </div>
+              <div class="row mt-1 mx-0">
+                <!-- Nav -->
+                {% if studies == [] %}
+                <p>해당하는 어울림이 없습니다</p>
+                {% endif %}
+                <!-- prettier-ignore -->
+                {% for study in studies[:12] %} {% if study['status'] in
+      ["recruiting", "in-progress"] %}
+                <div class="column colum-1 colum-2 colum-3 p-1 mb-1">
+                  <a href="{{url_for('study_page', study_id = study['id'])}}">
+                    <div class="card pb-2 pt-1 px-1 border-0">
+                      <img
+                        src="{{study['cover_image']}}"
+                        class="study-mainpage-img rounded-2"
+                        alt="어울림"
+                      />
+                      <div class="card-body ps-1 pt-1">
+                        <p class="mb-0 text-muted" style="font-size: 14px">
+                          {{study['writer_nickname']}}
+                        </p>
+                        <p class="ellipsis-2 fw-bold mb-1">
+                          {{study['title']}}
+                        </p>
+                        <p
+                          class="StudySchedule{{study['id']}}"
+                          style="font-size: 13px; margin-bottom: 4px"
+                        ></p>
+                        <p class="mt-0 mb-0" style="font-size: 13px">
+                          {% if study['StudyViewCount']%} ❤️
+                          {{study['StudyViewCount'][0]['count']}}명이 관심
+                          있어요 {%endif%}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                {% endif %} {% endfor %}
+              </div>
+            </section>
+            <!-- End Study section -->
+            {% endfor %}
+
+            <div
+              class="myCheckingBoardSection"
+              style="
+                padding: 1rem 0.875rem 1.25rem 0.875rem;
+                border-radius: 0.625rem;
+                background: #fff;
+                margin-top: 16px;
+              "
+            >
+              <p
+                style="
+                  color: #565656;
+                  font-size: 1.125rem;
+                  font-weight: 500;
+                  line-height: 1.625rem; /* 144.444% */
+                  letter-spacing: -0.02813rem;
+                "
+              >
+                나의 출석 현황
+              </p>
+              <div
+                class="StampSection"
+                style="
+                  padding-top: 0.88rem;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 1rem;
+                "
+              >
+                {% for i in range(6) %}
+                <div
+                  class="StampSectionRow"
+                  style="
+                    display: flex;
+                    justify-content: space-around;
+                    text-align: center;
+                  "
+                >
+                  {% for n in range(i*5+1, (i+1)*5+1 )%}
+                  <div id="Stamp__{{n}}"></div>
+                  {% endfor %}
+                </div>
+
+                {%endfor%}
+              </div>
+            </div>
+
+            <div
+              class="RankingBoardSection"
+              style="
+                margin-top: 1rem;
+                display: flex;
+                align-items: flex-start;
+                gap: 0.625rem;
+                align-self: stretch;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                  gap: 1rem;
+                  flex: 1 0 0;
+
+                  padding: 1rem 0.875rem 1.25rem 0.875rem;
+                  border-radius: 0.625rem;
+                  background: #fff;
+                "
+              >
+                <div
+                  class="RankingBoardHeader"
+                  style="
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 0.625rem;
+                    align-self: stretch;
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      flex-direction: column;
+                      align-items: flex-start;
+                      gap: 0.125rem;
+                      flex: 1 0 0;
+                    "
+                  >
+                    <div
+                      style="
+                        align-self: stretch;
+                        color: #121212;
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                        line-height: 2rem; /* 160% */
+                        letter-spacing: -0.03125rem;
+                      "
+                    >
+                      큐리어스 활동 랭킹
+                    </div>
+                    <div
+                      style="
+                        align-self: stretch;
+                        color: #00c123;
+                        font-size: 1rem;
+                        font-weight: 500;
+                        line-height: 1.5rem; /* 150% */
+                        letter-spacing: -0.025rem;
+                      "
+                    >
+                      나의 현재 큐 포인트 :
+                      <span class="CurrentQPoint" style="font-weight: 700">
+                        0P
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 0.75rem;
+                      align-self: stretch;
+                      cursor: pointer;
+                    "
+                    id="reloadRanking"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="28"
+                      height="28"
+                      viewBox="0 0 28 28"
+                      fill="none"
+                    >
+                      <path
+                        d="M24.4988 6.53235V12.1338H18.7715"
+                        stroke="#565656"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3.5 21.4691V15.8677H9.22727"
+                        stroke="#565656"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M5.89591 11.1994C6.38002 9.86134 7.20281 8.66507 8.28749 7.72217C9.37217 6.77927 10.6834 6.12047 12.0988 5.80725C13.5142 5.49403 14.9877 5.53659 16.3818 5.93097C17.7758 6.32534 19.045 7.05867 20.0709 8.06254L24.5 12.1329M3.5 15.8673L7.92909 19.9377C8.95499 20.9415 10.2242 21.6749 11.6182 22.0692C13.0123 22.4636 14.4858 22.5062 15.9012 22.1929C17.3166 21.8797 18.6278 21.2209 19.7125 20.278C20.7972 19.3351 21.62 18.1389 22.1041 16.8008"
+                        stroke="#565656"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                <div
+                  class="RankingBoardBody"
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 0.75rem;
+                    align-self: stretch;
+                  "
+                >
+                  {% for i in range(1,51)%}
+                  <div
+                    class="RankingBoardBodyRow"
+                    id="RankerRow__{{i}}"
+                    style="
+                      display: none;
+                      align-items: center;
+                      gap: 0.75rem;
+                      align-self: stretch;
+                    "
+                  >
+                    <div
+                      class="RankingAndProfile"
+                      style="
+                        display: flex;
+                        align-items: center;
+                        gap: 0.375rem;
+                        flex: 1 0 0;
+                      "
+                    >
+                      <div id="RankerRanking__{{i}}"></div>
+                      <a
+                        style="
+                          display: flex;
+                          width: 12.5rem;
+                          align-items: center;
+                          gap: 0.5rem;
+                          cursor: pointer;
+                          text-decoration: none;
+                        "
+                        id="RankerProfile__{{i}}"
+                      >
+                        <img
+                          src=""
+                          id="RankerProfileImage__{{i}}"
+                          alt="사용자 프로필 사진"
+                          style="
+                            width: 2.75rem;
+                            height: 2.75rem;
+                            flex-shrink: 0;
+                            border-radius: 2.75rem;
+                          "
+                        />
+                        <p
+                          style="
+                            flex: 1 0 0;
+                            color: #565656;
+                            font-size: 1rem;
+                            font-weight: 500;
+                            line-height: 1.5rem; /* 150% */
+                            letter-spacing: -0.025rem;
+                          "
+                          id="RankerNickname__{{i}}"
+                        ></p>
+                      </a>
+                    </div>
+
+                    <div class="RankerPoint">
+                      <p
+                        style="
+                          color: #565656;
+                          text-align: right;
+                          font-size: 1rem;
+                          font-weight: 700;
+                          line-height: 1.5rem; /* 150% */
+                          letter-spacing: -0.025rem;
+                        "
+                        id="RankerPoint__{{i}}"
+                      ></p>
+                    </div>
+                  </div>
+                  {% endfor %}
+
+                  <div
+                    class="showMoreRanking"
+                    style="margin: 8px auto 0px auto"
+                  >
+                    <button
+                      id="ShowMoreRankingButton"
+                      onclick="showMoreRanking()"
+                      style="
+                        display: flex;
+                        padding: 12px 16px;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 4px;
+                        border-radius: 10px;
+                        background: #d9f6de;
+                        border: 0px;
+                        color: #00c123;
+                        text-align: center;
+                        font-size: 14px;
+                        font-weight: 700;
+                        line-height: 20px; /* 142.857% */
+                        letter-spacing: -0.35px;
+                      "
+                    >
+                      순위 더보기
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M1.64645 4.64645C1.84171 4.45118 2.15829 4.45118 2.35355 4.64645L8 10.2929L13.6464 4.64645C13.8417 4.45118 14.1583 4.45118 14.3536 4.64645C14.5488 4.84171 14.5488 5.15829 14.3536 5.35355L8.35355 11.3536C8.15829 11.5488 7.84171 11.5488 7.64645 11.3536L1.64645 5.35355C1.45118 5.15829 1.45118 4.84171 1.64645 4.64645Z"
+                          fill="#00C123"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--출석체크 완료 모달-->
+    <div class="Modal" id="AttendanceCompleteModal">
+      <div class="ModalSection">
+        <div class="ModalContainer">
+          <img
+            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FsJJFh%2FbtsGurvi84u%2F5T1KGOSpOcksGHd59hN0xK%2Fimg.png"
+            alt=""
+            class="ModalImage"
+          />
+          <div class="ModalTextSection">
+            <p class="ModalInfoText" id="AttendanceCompleteModalInfoText">
+              누적 포인트 :
+              <span class="CurrentQPoint"> 2,359P </span>
+            </p>
+            <div class="ModalBodyText">
+              <div class="ModalTitle" id="AttendanceCompleteModalTitleText">
+                <span id="UserGotPoint"></span>P 적립되었습니다!
+              </div>
+              <div class="ModalBody">
+                출석 체크 포인트로 어울림<br />
+                할인을 받을 수 있습니다!
+              </div>
+            </div>
+          </div>
+          <div class="ModalButtonSection">
+            <button class="AdditionalAction" id="StudyEyeShopingButton">
+              어울림 구경
+            </button>
+            <button
+              class="Okay close_btn"
+              id="AttendanceCompleteModalCloseButton"
+            >
+              확인
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end 모달 팝업-->
+
+    <!--공유 완료 모달-->
+    <div class="Modal" id="ShareCompleteModal"></div>
+    <!--end 모달 팝업-->
+
+    <script type="text/javascript" src="/static/js/EVT.js"></script>
+    <script type="text/javascript" src="/static/js/kakao-share.js"></script>
+    <script
+      src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.1/kakao.min.js"
+      integrity="sha384-kDljxUXHaJ9xAb2AzRd59KxjrFjzHa5TAoFQ6GbYTCAG0bjM55XohjjDT7tDDC01"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // {# 카카오톡 공유에 필요한 요소 설정 #}
+      // {# 상단 스크립트에 위치해야 함 #}
+      setDescription(`{{kakao_share_description}}`);
+      setImageUrl(`{{kakao_share_image}}`);
+    </script>
+
+    <script>
+      updateStamps();
+
+      addHrefToClickEvent("LeftTopButton", "{{url_for('main')}}");
+      addHrefToClickEvent(
+        "StudyEyeShopingButton",
+        "{{url_for('popular_studies_page')}}"
+      );
+
+      updateUserPointInfo("{{user_id}}");
+      updateRankingBoardIncludingCommunityActivities();
+      loadShareCompleteModal();
+      updateUserCurrentQPoint();
+
+      document
+        .getElementById("AttendanceButton")
+        .addEventListener("click", function () {
+          if (isLoginUser("{{user_id}}")) {
+            document.getElementById("AttendanceCompleteModal").style.display =
+              "block";
+            buttonDisabled("AttendanceButton");
+            attendance("{{user_id}}");
+            updatePointAfterAttend();
+            updateTodayStampComplete();
+            saveCookieAfterUserAttandance();
+          } else {
+            window.location.href = "{{url_for('login')}}";
+          }
+        });
+
+      document
+        .getElementById("ShareButton")
+        .addEventListener("click", function () {
+          if (isLoginUser("{{user_id}}")) {
+            clickShareButton("{{access_token}}", "{{user_id}}", this);
+          } else {
+            window.location.href = "{{url_for('login')}}";
+          }
+        });
+
+      document
+        .getElementById("ShareAgainButton")
+        .addEventListener("click", function () {
+          document.getElementById("ShareButton").click();
+        });
+
+      document
+        .getElementById("AttendanceCompleteModalCloseButton")
+        .addEventListener("click", function () {
+          document.getElementById("AttendanceCompleteModal").style.display =
+            "none";
+          updateRankingBoardIncludingCommunityActivities();
+        });
+
+      document
+        .getElementById("ShareCompleteModalCloseButton")
+        .addEventListener("click", function () {
+          document.getElementById("ShareCompleteModal").style.display = "none";
+          updateRankingBoardIncludingCommunityActivities();
+        });
+
+      let rotateDegree = 180;
+      document
+        .getElementById("reloadRanking")
+        .addEventListener("click", function () {
+          resetRankingBoard();
+          setTimeout(
+            () => updateRankingBoardIncludingCommunityActivities(),
+            10
+          );
+          this.style.transition = "0.8s";
+          this.style.transform = `rotate(${rotateDegree}deg)`;
+          rotateDegree += 180;
+        });
+    </script>
+    {% for study in popular_study %}
+
+    <script>
+      fetch('/api/v1/study-schedules/{{study["id"]}}', {
+        method: "GET",
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          var datetime = data["data"][0]["datetime"];
+          if (/^\d/.test(datetime)) {
+            let reg = /\([월화수목금토일]\)/g;
+            datetime =
+              "⏰ " + datetime.split(" ~ ")[0].replace(reg, "") + " 시작";
+          }
+          var studySchedules = document.querySelectorAll(
+            '.StudySchedule{{study["id"]}}'
+          );
+          studySchedules.forEach((e) => {
+            e.innerHTML = datetime;
+          });
+        });
+    </script>
+    {% endfor%}
+    <!-- Feather Icons CDN 사용 -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+      // 문서가 로드된 후 Feather Icons 초기화
+      document.addEventListener("DOMContentLoaded", function () {
+        feather.replace(); // Feather Icons 라이브러리 초기화
+      });
+    </script>
+    <!-- NOTE: 커뮤니티 참여 리워드 API 호출 부분.  -->
+    <script type="module">
+      import { getCommunityActivitiesQPoint } from "/static/js/page/community/point/update-point-for-community.js";
+
+      function updateCommunityActivityCounts(data) {
+        // 최초 글 작성
+        const firstPostDiv = document.getElementById("FirstPostCount");
+        if (data.firstPost && data.firstPost.currentRegistered > 0) {
+          firstPostDiv.innerHTML = `<span style="color: var(--system-black); font-weight: 700">${data.firstPost.currentRegistered} 회 /&nbsp;</span> ${data.firstPost.totalAvailable} 회`;
+        } else {
+          firstPostDiv.innerHTML = `0<div>&nbsp;회</div>`;
+        }
+
+        // 글 작성
+        const postDiv = document.getElementById("PostCount");
+        if (data.post && data.post.currentRegistered > 0) {
+          postDiv.innerHTML = `<span style="color: var(--system-black); font-weight: 700">${data.post.currentRegistered} 회 /&nbsp;</span> ${data.post.totalAvailable} 회`;
+        } else {
+          postDiv.innerHTML = `0<div>&nbsp;회</div>`;
+        }
+
+        // 댓글 작성
+        const commentDiv = document.getElementById("CommentCount");
+        if (data.comment && data.comment.currentRegistered > 0) {
+          commentDiv.innerHTML = `<span style="color: var(--system-black); font-weight: 700">${data.comment.currentRegistered} 회 /&nbsp;</span> ${data.comment.totalAvailable} 회`;
+        } else {
+          commentDiv.innerHTML = `0<div>&nbsp;회</div>`;
+        }
+      }
+
+      getCommunityActivitiesQPoint().then((data) => {
+        updateCommunityActivityCounts(data);
+      });
+    </script>
+  </body>
+</html>

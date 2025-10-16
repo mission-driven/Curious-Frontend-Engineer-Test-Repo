@@ -1,0 +1,238 @@
+/* ---- 실시간 인기 어울림 도입으로 인해 bootstrap css를 차용해서 써야 하는 상황 ---- */
+.p-1 {
+    padding: .25rem !important;
+}
+
+.mb-1 {
+    margin-bottom: .25rem !important;
+}
+
+@media (min-width: 668px) {
+    .colum-1 {
+        flex: 0 0 auto;
+        width: 23%;
+    }
+}
+
+/* 세로모드 모바일 디바이스 (가로 해상도가 576px 보다 작은 화면에 적용) */
+.column {
+    flex: 0 0 auto;
+}
+
+@media (min-width: 320px) and (max-width: 410px) {
+    .column {
+        width: 45%;
+    }
+}
+
+
+@media (min-width: 411px) and (max-width: 575px) {
+    .column {
+        width: 48%;
+    }
+}
+
+/* 가로모드 모바일 디바이스 (가로 해상도가 576px보다 크고 768px 보다 작은 화면에 적용)  */
+@media (min-width: 576px) and (max-width: 767px) {
+    .column {
+        width: 30%;
+    }
+}
+
+/*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
+@media (min-width: 768px) {
+    .column {
+        width: 23%;
+    }
+}
+
+.mb-2 {
+    margin-bottom: .5rem !important;
+}
+
+.mt-4 {
+    margin-top: 1.5rem !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.d-flex {
+    display: flex !important;
+}
+
+.mt-1 {
+    margin-top: .25rem !important;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1* var(--bs-gutter-y));
+    margin-right: calc(-.5* var(--bs-gutter-x));
+    margin-left: calc(-.5* var(--bs-gutter-x));
+}
+
+.card,
+.card-img-overlay {
+    border-radius: 1rem;
+    padding-bottom: 1.5rem;
+    padding-top: 1.5rem;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.pb-2 {
+    padding-bottom: .5rem !important;
+}
+
+.pt-1 {
+    padding-top: .25rem !important;
+}
+
+.px-1 {
+    padding-right: .25rem !important;
+    padding-left: .25rem !important;
+}
+
+.border-0 {
+    border: 0 !important;
+}
+
+.card {
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-title-color: ;
+    --bs-card-subtitle-color: ;
+    --bs-border-radius: 0.5rem;
+    --bs-card-border-width: var(--bs-border-width);
+    --bs-card-border-color: var(--bs-border-color-translucent);
+    --bs-card-border-radius: var(--bs-border-radius);
+    --bs-card-box-shadow: ;
+    --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+    --bs-card-cap-color: ;
+    --bs-card-height: ;
+    --bs-card-color: ;
+    --bs-card-bg: var(--bs-body-bg);
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-card-height);
+    color: var(--bs-body-color);
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+}
+
+.study-mainpage-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.study-card-img-thumb,
+.study-card-img-thumb-small,
+.card-img-top,
+.card-img-top-small,
+.card-img-top-xsmall,
+.square-img-small,
+.study-mainpage-img,
+.study-mainpage-img-mobile,
+.study-card-img-big,
+.study-card-img-big-mobile,
+.book-card-img-big,
+.book-card-img-big-mobile {
+    display: block;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rounded-2 {
+    border-radius: var(--bs-border-radius) !important;
+}
+
+.card-body {
+    padding: 0px;
+}
+
+.ps-1 {
+    padding-left: .25rem !important;
+}
+
+.pt-1 {
+    padding-top: .25rem !important;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+    color: var(--bs-card-color);
+}
+
+.text-muted {
+    color: var(--bs-gray-dark) !important;
+}
+
+.text-muted {
+    --bs-text-opacity: 1;
+    color: var(--bs-secondary-color) !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.ellipsis-2 {
+    -webkit-line-clamp: 2;
+}
+
+.ellipsis-1,
+.ellipsis-2,
+.ellipsis-3,
+.ellipsis-4,
+.book-card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-height: 1.5em;
+}
+
+.fw-bold {
+    font-weight: 700 !important;
+}
+
+.mb-1 {
+    margin-bottom: .25rem !important;
+}
+
+.page-title-font {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 46px;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.me-5 {
+    margin-right: 3rem !important;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

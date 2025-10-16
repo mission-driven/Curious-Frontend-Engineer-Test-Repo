@@ -1,0 +1,460 @@
+body {
+	font-family: "Noto Sans", "Apple SD Gothic Neo", sans-serif;
+}
+
+.TopSection {
+	height: 19.75rem;
+	flex-shrink: 0;
+}
+
+.TopSection > div {
+	background: #f8f8fa;
+	height: 15.4375rem;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+}
+
+.GiftBoxImg {
+	margin-top: 7.5rem;
+	width: 12.25rem;
+	height: 12.25rem;
+	flex-shrink: 0;
+}
+
+.Nav {
+	position: fixed;
+	top: 0;
+	display: inline-flex;
+	padding: 1rem;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.625rem;
+}
+
+.Nav > div {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.25rem;
+	align-self: stretch;
+}
+
+.Nav svg.BackIcon {
+	width: 1.5rem;
+	height: 1.5rem;
+	cursor: pointer;
+}
+
+.Nav p {
+	color: #000;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.5rem;
+	/* 150% */
+	letter-spacing: -0.025rem;
+	width: 18.75rem;
+}
+
+.BottomSection {
+	display: flex;
+	padding: 0rem 1rem 2rem 1rem;
+	align-items: flex-start;
+	gap: 0.625rem;
+	justify-content: center;
+}
+
+.BottomSection > div {
+	display: flex;
+	width: 22.5rem;
+	padding: 0rem 1rem 2rem 1rem;
+	align-items: flex-start;
+	gap: 0.625rem;
+	justify-content: center;
+}
+
+.BottomSection > div > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	align-self: stretch;
+}
+
+.BottomSection .textSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.375rem;
+	align-self: stretch;
+}
+
+.BottomSection p.display {
+	align-self: stretch;
+	color: #111;
+	text-align: center;
+	font-size: 1.5rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 2.125rem;
+	/* 141.667% */
+	letter-spacing: -0.0375rem;
+}
+
+.BottomSection p.body {
+	align-self: stretch;
+	color: #565656;
+	text-align: center;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.5rem;
+	/* 150% */
+	letter-spacing: -0.025rem;
+}
+
+.attendanceSection {
+	display: flex;
+	padding: 1.25rem 0.875rem;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.625rem;
+	align-self: stretch;
+	border-radius: 0.625rem;
+	border: 1px solid #efefef;
+	background: #fff;
+}
+
+.attendanceSection > div {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.625rem;
+	align-self: stretch;
+}
+
+.attendanceSection .completed,
+.attendanceSection .uncompleted {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.125rem;
+	flex: 1 0 0;
+}
+
+.attendanceSection img {
+	width: 52px;
+	height: 52px;
+}
+
+.attendanceSection .completed > div {
+	color: #121212;
+	text-align: center;
+	font-size: 0.75rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 1.125rem;
+	/* 150% */
+}
+
+.attendanceSection .uncompleted > div {
+	color: #777;
+	text-align: center;
+	font-size: 0.75rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.125rem;
+	/* 150% */
+}
+
+.attendanceSection .PointFont {
+	color: #c3c7d2;
+	text-align: center;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.25rem;
+	/* 142.857% */
+}
+
+.uncompleted > .imageSection {
+	width: 3.25rem;
+	height: 3.25rem;
+	position: relative;
+}
+
+.uncompleted > div > svg {
+}
+
+.uncompleted > div > p {
+	width: 2.625rem;
+	color: #c3c7d2;
+	text-align: center;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.25rem;
+	/* 142.857% */
+	position: absolute;
+	top: 1.05rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.ButtonSection {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.625rem;
+	align-self: stretch;
+}
+
+.ButtonSection > .ShareButtonSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	align-self: stretch;
+}
+
+.ButtonSection > .StartButton {
+	display: flex;
+	padding: 0.875rem 3.875rem;
+	justify-content: center;
+	align-items: center;
+	gap: 0.625rem;
+	align-self: stretch;
+	border-radius: 0.625rem;
+	background: #03c124;
+	cursor: pointer;
+}
+
+.ButtonSection > .ShareButtonSection > .Tooltip {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.ButtonSection > .ShareButtonSection > .Tooltip > div {
+	display: flex;
+	padding: 0.375rem 0.75rem;
+	align-items: center;
+	gap: 0.25rem;
+	border-radius: 6.25rem;
+	background: #111;
+}
+
+.ButtonSection > .ShareButtonSection > .Tooltip > div > p {
+	color: #fff;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.25rem;
+	/* 142.857% */
+	letter-spacing: -0.02188rem;
+}
+
+.ButtonSection > .ShareButtonSection > .Tooltip > div > p > span {
+	color: #31f354;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 1.25rem;
+	letter-spacing: -0.02188rem;
+}
+
+.ButtonSection > .ShareButtonSection > .Tooltip > div > svg {
+	width: 0.625rem;
+	height: 0.375rem;
+	fill: #111;
+}
+
+.ButtonSection > .ShareButtonSection > .ShareButton {
+	display: flex;
+	padding: 0.875rem 3.875rem;
+	justify-content: center;
+	align-items: center;
+	gap: 0.625rem;
+	align-self: stretch;
+	border-radius: 0.625rem;
+	background: #d9f6de;
+	cursor: pointer;
+}
+
+.ShareButton {
+	color: #03c124;
+	text-align: center;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 1.5rem;
+	/* 150% */
+	letter-spacing: -0.025rem;
+}
+
+.StartButton {
+	color: #fff;
+	text-align: center;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 1.5rem;
+	/* 150% */
+	letter-spacing: -0.025rem;
+}
+
+/*모달 팝업 영역 스타일링*/
+.Modal {
+	/*팝업 배경*/
+	display: none;
+	/*평소에는 보이지 않도록*/
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.Modal .ModalSection {
+	/*팝업*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 1rem;
+	background: #fff;
+	display: flex;
+	width: 18rem;
+	padding: 1.5rem 1.5rem 1.75rem 1.5rem;
+	align-items: flex-start;
+	gap: 0.625rem;
+}
+
+.Modal .ModalSection .close_btn {
+	display: block;
+	transition: box-shadow 0.5s;
+}
+
+.Modal .ModalContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.25rem;
+	flex: 1 0 0;
+}
+
+.Modal .ModalImage {
+	display: flex;
+	width: 8rem;
+	height: 8rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.ModalInfoText {
+	align-self: stretch;
+	color: #555;
+	text-align: center;
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.25rem;
+	/* 142.857% */
+	letter-spacing: -0.02188rem;
+}
+
+.ModalTextSection {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.75rem;
+	align-self: stretch;
+}
+
+.ModalBodyText {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.375rem;
+	align-self: stretch;
+}
+
+.ModalTitle {
+	align-self: stretch;
+	color: #111;
+	text-align: center;
+	font-size: 1.5rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 2.125rem;
+	/* 141.667% */
+	letter-spacing: -0.0375rem;
+}
+
+.ModalBody {
+	align-self: stretch;
+	color: #555;
+	text-align: center;
+	font-size: 1.125rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.625rem;
+	/* 144.444% */
+	letter-spacing: -0.02813rem;
+}
+
+.ModalWarningText {
+	align-self: stretch;
+	color: #f13636;
+	text-align: center;
+	font-size: 0.75rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.125rem;
+	/* 150% */
+	letter-spacing: -0.01875rem;
+}
+
+.ModalButtonSection {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.625rem;
+	align-self: stretch;
+}
+
+.ModalButtonSection button {
+	display: flex;
+	padding: 0.75rem 0rem;
+	justify-content: center;
+	align-items: center;
+	gap: 0.625rem;
+	flex: 1 0 0;
+	border-radius: 0.5rem;
+	border: 0;
+	cursor: pointer;
+}
+
+.ModalButtonSection .AdditionalAction {
+	background: #d9f6de;
+	color: #00c123;
+	text-align: center;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 1.5rem;
+	/* 150% */
+	letter-spacing: -0.025rem;
+}
+
+.ModalButtonSection .Okay {
+	background: #00c123;
+	color: #fff;
+	text-align: center;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 1.5rem;
+	/* 150% */
+	letter-spacing: -0.025rem;
+}
