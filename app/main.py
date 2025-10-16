@@ -32,7 +32,6 @@ def study_page(study_id):
 
 @app.route("/event/attendance-check")
 def event_attendance_check():
-    # 만약 한번도 출석체크를 하지 않은 사람이라면 온보딩 페이지로 연결되게 하기
     user_id = None
 
     if datetime.now().month == 8:
