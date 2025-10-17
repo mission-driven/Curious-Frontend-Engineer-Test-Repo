@@ -3,8 +3,6 @@ services:
   curious-frontend-2:
     environment:
       - TZ=Asia/Seoul
-    env_file:
-      - .env
     build:
       context: ./
       dockerfile: ./Dockerfile.development
@@ -12,7 +10,7 @@ services:
         - flask
     volumes:
         - .:/code
-    image: "curious-frontend-development"
+    image: "frontend-engineer-test"
     ports:
       - "5055:5000"
     restart: on-failure
