@@ -68,6 +68,27 @@ frontend-test/
 
 ## 🚀 시작하기
 
+### IDE 설정을 위한 로컬 환경 구성
+
+Docker로 실행하더라도 IDE에서 코드 작성 시 자동완성과 타입 힌팅을 위해 로컬에 가상환경과 의존성을 설치하는 것을 권장합니다.
+
+```bash
+# 1. 가상환경 생성
+python3 -m venv .venv
+
+# 2. 가상환경 활성화
+source .venv/bin/activate  # macOS/Linux
+# 또는
+.venv\Scripts\activate  # Windows
+
+# 3. 의존성 설치
+pip install -r requirements.txt
+
+# 4. IDE에서 Python 인터프리터를 .venv/bin/python으로 설정
+```
+
+> **참고**: 이 단계는 IDE에서 import 오류 표시를 없애기 위한 것이며, 실제 실행은 Docker를 사용합니다.
+
 ### Docker로 실행하기
 
 #### 1. Docker Compose로 빌드 및 실행
