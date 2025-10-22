@@ -12,7 +12,7 @@ app.register_blueprint(api_v1, url_prefix=API_V1_PREFIX)
 
 @app.route("/")
 def main():
-    return "ok"
+    return '<a href="/event/attendance-check">Test Page로 이동하기</a>'
 
 
 @app.route("/login")
