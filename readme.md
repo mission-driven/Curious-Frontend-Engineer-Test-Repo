@@ -107,6 +107,7 @@ docker-compose -f docker-compose.dev.yml logs -f
 #### 2. 애플리케이션 접속
 
 브라우저에서 다음 URL로 접속:
+- **인덱스 페이지**: http://localhost:5055/
 - **출석 체크 페이지**: http://localhost:5055/event/attendance-check
 
 #### 3. Docker 컨테이너 중지
